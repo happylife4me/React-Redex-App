@@ -14,10 +14,21 @@
 
 import {createStore} from "redux"
 
+const reducer = function(state, action){
+    console.log(state, action)
+    if (action.type === "INC"){
+        return state + action.payload;
+    }
+    if (action.type === "DEC"){
+        return state - action.payload;
+    }
+    return state;
+}
+
 //Create Store and attaching to reducer with initial state
 const store = createStore(reducer, 1);
 
-//subscribe yo store to get new state
+//subscribe you store to get new state
 store.subscribe(() => {
     console.log("Store Changed : " + store.getState())
 })
